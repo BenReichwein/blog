@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from '../services/history';
-import Home from '../view/pages/home'
+import Home from './pages/home'
 
 const App = () => {
   return (
