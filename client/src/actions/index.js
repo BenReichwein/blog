@@ -1,5 +1,5 @@
-import history from '../history'
-import api from './api'
+import history from '../services/history'
+import api from '../services/api'
 import {
     WELCOME_MESSAGE,
 } from './types';

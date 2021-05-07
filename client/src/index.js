@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
-import App from './components/app';
+import App from './services/app';
 import reducers from './reducers';
 import './index.css';
 // This is where we combine the react redux base our application

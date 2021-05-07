@@ -39,7 +39,7 @@ func Connect() {
 	// Init grid fs
 	var e error
 	Bucket, e = gridfs.NewBucket(
-        client.Database("myfiles"),
+        client.Database(dbName),
     )
 	if e != nil {
 		log.Fatal(e)
