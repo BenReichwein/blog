@@ -31,7 +31,7 @@ export const register = (formValues) => () => {
 };
 // logging into existing account
 export const login = (formValues) => () => {
-  api.post('/use/login', {
+  api.post('/user/login', {
     username: formValues.username.toLowerCase(),
     password: formValues.password
   })

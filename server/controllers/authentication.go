@@ -34,7 +34,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		json.NewEncoder(w).Encode(res.Result)
 	}
-	fmt.Println("here", res)
+	fmt.Println(res)
 }
 // Logs in user
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
