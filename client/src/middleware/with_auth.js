@@ -14,7 +14,7 @@ export default function withAuth(ComponentToProtect) {
     }
 
     componentDidMount() {
-      api.get('/auth/gettoken')
+      api.get('/user/gettoken')
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });
