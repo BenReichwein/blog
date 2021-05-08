@@ -12,3 +12,34 @@ export const welcomeMessage = () => async (dispatch) => {
 
   dispatch({ type: WELCOME_MESSAGE, payload: response.data});
 };
+//
+//-> Authentications
+//
+// making an account
+export const register = (formValues) => () => {
+  api.post('/user/register', {
+    username: formValues.username.toLowerCase(),
+    password: formValues.password
+  })
+  .then(res => {
+    alert('Registered! Go login')
+    history.push('/login')
+  })
+  .catch(err => {
+    alert(err.response.data)
+  })
+};
+// logging into existing account
+export const login = (formValues) => () => {
+  api.post('/use/login', {
+    username: formValues.username.toLowerCase(),
+    password: formValues.password
+  })
+  .then(res => {
+    console.log('ok')
+    history.push('/')
+  })
+  .catch(err => {
+    alert(err.response.data)
+  })
+};

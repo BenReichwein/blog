@@ -2,6 +2,8 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from '../services/history';
 import Home from './pages/home'
+import Login from './pages/login'
+import Register from './pages/register'
 
 const App = () => {
   return (
@@ -10,6 +12,8 @@ const App = () => {
         <div>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/register" exact component={Register} />
           </Switch>
         </div>
       </Router>
