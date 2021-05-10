@@ -10,6 +10,15 @@ type User struct {
 	Image     string             `json:"image"`
 }
 
+type Blog struct {
+	ID        		primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Title  			string             `json:"title"`
+	Topics  		string             `json:"topics"`
+	Description     string             `json:"description"`
+	Blog     		string             `json:"blog"`
+	Image     		string             `json:"image"`
+}
+
 type ResponseResult struct {
 	Error  string `json:"error"`
 	Result string `json:"result"`

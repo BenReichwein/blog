@@ -1,5 +1,6 @@
 import history from '../services/history'
 import api from '../services/api'
+import axios from 'axios'
 import {
     WELCOME_MESSAGE,
 } from './types';
@@ -42,4 +43,56 @@ export const login = (formValues) => () => {
   .catch(err => {
     alert(err.response.data)
   })
+};
+//
+// -> Blog
+//
+// Create blog
+export const createBlog = (title, topics, description, blog, image) => {
+  console.log('done')
+  const formData = new FormData();
+  formData.append(
+    "file",
+    image,
+  );
+  formData.append(
+    'title',
+    title
+  )
+  formData.append(
+    'topics',
+    topics
+  )
+  formData.append(
+    'description',
+    description
+  )
+  formData.append(
+    'blog',
+    blog
+  )
+
+  axios({
+    method: 'POST',
+    url: 'http://localhost:8080/api/blog',
+    data: formData,
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+    },
+    withCredentials: true,
+    mode: 'cors'
+  })
+    .then(res => {
+      history.push("/")
+      alert(res.data)
+    })
+    .catch(err => {
+      if (err.response.status === 401) {
+        history.push("/login")
+        return
+      } else {
+        console.error(err);
+        throw err;
+      }
+    })
 };
