@@ -2,7 +2,7 @@
 import {
     ALL_BLOGS
 } from '../actions/types'
-export default (state = {}, action) => {
+export default (state = null, action) => {
     switch (action.type) {
         case ALL_BLOGS:
             return action.payload;

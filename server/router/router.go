@@ -16,7 +16,7 @@ func Router() *mux.Router {
 	router.HandleFunc("/api/blog", controllers.CreateBlog).Methods("POST", "OPTIONS")
 	router.HandleFunc("/api/blog/all", controllers.AllBlogs).Methods("GET", "OPTIONS")
 	router.HandleFunc("/api/user/gettoken", controllers.GetToken).Methods("GET", "OPTIONS")
-	router.HandleFunc("/api/img/{name}", controllers.GetToken).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/img/{name}", controllers.ServeImage).Methods("GET", "OPTIONS")
 	return router
 }
 
