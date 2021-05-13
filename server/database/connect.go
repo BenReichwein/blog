@@ -11,20 +11,39 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/gridfs"
 )
 
-// collection object/instance - used across database package
-var Collection *mongo.Collection
-var Bucket *gridfs.Bucket
+type database struct {
+	Database *mongo.Database
+	Bucket   *gridfs.Bucket
+}
 
-// connect to mongodb
+func (d *database) Find(ctx context.Context, coll string, filter interface{}) (*mongo.Cursor, error) {
+	return d.Database.Collection(coll).Find(ctx, filter)
+}
+
+func (d *database) InsertOne(ctx context.Context, coll string, docs ...interface{}) (*mongo.InsertManyResult, error) {
+	return d.Database.Collection(coll).InsertMany(ctx, docs)
+}
+
+func (d *database) FindOne(ctx context.Context, coll string, filter interface{}) *mongo.SingleResult {
+	return d.Database.Collection(coll).FindOne(ctx, filter)
+}
+
+func (d *database) UpdateOne(ctx context.Context, coll string, filter, update interface{}) (*mongo.UpdateResult, error) {
+	return d.Database.Collection(coll).UpdateOne(ctx, filter, update)
+}
+
+func (d *database) FindOneAndUpdate(ctx context.Context, coll string, filter, update interface{}) *mongo.SingleResult {
+	return d.Database.Collection(coll).FindOneAndUpdate(ctx, filter, update)
+}
+
+var Database database
+
 func Connect() {
 	connectionString := os.Getenv("DB_URI")
 	dbName := os.Getenv("DB_NAME")
-	collName := os.Getenv("DB_COLLECTION_NAME")
 
-	// Set client options
 	clientOptions := options.Client().ApplyURI(connectionString)
 
-	// connect to MongoDB
 	client, err := mongo.Connect(context.Background(), clientOptions)
 	if err != nil {
 		log.Fatal(err)
@@ -32,21 +51,22 @@ func Connect() {
 
 	// Check the connection
 	err = client.Ping(context.Background(), nil)
+
 	if err != nil {
 		log.Fatal(err)
 	}
-	// Init grid fs
-	var e error
-	Bucket, e = gridfs.NewBucket(
-        client.Database(dbName),
-    )
-	if e != nil {
-		log.Fatal(e)
+
+	log.Println("Connected to MongoDB!")
+
+	bucket, err := gridfs.NewBucket(
+		client.Database(dbName),
+	)
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	fmt.Println("Connected to MongoDB!")
+	log.Println("GridFS bucket created!")
 
-	Collection = client.Database(dbName).Collection(collName)
-
+	Database = database{Database: client.Database(dbName), Bucket: bucket}
 	fmt.Println("Collection instance created!")
 }

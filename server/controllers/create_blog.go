@@ -9,7 +9,7 @@ import (
 	"server/models"
 )
 
-// Registers user
+// Create blog
 func CreateBlog(w http.ResponseWriter, r *http.Request) {
 	r.ParseMultipartForm(32 << 20) // limit your max input length
 	file, header, err := r.FormFile("file")

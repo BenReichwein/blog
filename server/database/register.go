@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"server/constants"
 	"server/models"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -12,7 +13,7 @@ import (
 func Register(user models.User) (models.ResponseResult) {
 	var result models.User
 	var res models.ResponseResult
-	err := Collection.FindOne(context.TODO(), bson.M{"username": user.Username}).Decode(&result)
+	err := Database.FindOne(context.TODO(), constants.USER_COLL, bson.M{"username": user.Username}).Decode(&result)
 	if err != nil {
 		if err.Error() == "mongo: no documents in result" {
 			hash, err := bcrypt.GenerateFromPassword([]byte(user.Password), 5)
@@ -23,8 +24,7 @@ func Register(user models.User) (models.ResponseResult) {
 			} else {
 				user.Password = string(hash)
 			}
-
-			_, err = Collection.InsertOne(context.TODO(), user)
+			_, err = Database.InsertOne(context.TODO(), constants.USER_COLL, user)
 			if err != nil {
 				res.Error = "Error While Creating User, Try Again"
 				return res

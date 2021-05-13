@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"log"
+	"server/constants"
 	"server/models"
 )
 
@@ -11,7 +12,7 @@ func UploadBlog(data []byte, blog models.Blog) (models.ResponseResult) {
 	var res models.ResponseResult
 
 	// Uploading the file name
-	uploadStream, err := Bucket.OpenUploadStream(
+	uploadStream, err := Database.Bucket.OpenUploadStream(
 		blog.Image,
 	)
 	if err != nil {
@@ -30,7 +31,7 @@ func UploadBlog(data []byte, blog models.Blog) (models.ResponseResult) {
 
 	log.Printf("Write file to DB was successful. File size: %d M\n", fileSize)
 	// Inserting blog
-	_, err = Collection.InsertOne(context.TODO(), blog)
+	_, err = Database.InsertOne(context.TODO(), constants.BLOG_COLL, blog)
 	if err != nil {
 		res.Error = "Error While Uploading Blog, Try Again"
 		return res

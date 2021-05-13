@@ -3,12 +3,19 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react'
 
-import {welcomeMessage} from '../../actions'
+import {allBlogs} from '../../actions'
 import Sidebar from '../components/sidebar'
 import TextHeader from '../components/text_header'
 
 class Blog extends Component {
+
+    componentDidMount = () => {
+        this.props.allBlogs()
+    }
+
     render() {
+        let {blog} = this.props
+        console.log(blog)
         return (
             <div>
                 {/* Text Header */}
@@ -50,7 +57,7 @@ class Blog extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {message: state.message}
+    return {blog: state.blog}
 }
 
-export default connect(mapStateToProps, {welcomeMessage})(Blog)
+export default connect(mapStateToProps, {allBlogs})(Blog)
