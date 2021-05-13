@@ -8,7 +8,7 @@ import (
 
 // Get all blogs
 func AllBlogs(w http.ResponseWriter, r *http.Request) {
-	res := database.GetBlogs()
+	res := database.FindBlogs()
 
 	json.NewEncoder(w).Encode(res)
 }

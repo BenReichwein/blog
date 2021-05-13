@@ -7,7 +7,16 @@ export default class MakePost extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            blog: '',
+            blog: `
+            <h1 class="text-2xl font-bold pb-3">Introduction</h1>
+            <p class="pb-3">Introduction Text</p>
+            <h1 class="text-2xl font-bold pb-3">Heading</h1>
+            <p class="pb-3">Heading Text</p>
+            <p class="pb-3">Heading Text</p>
+            <p class="pb-3">Heading Text</p>
+            <h1 class="text-2xl font-bold pb-3">Conclusion</h1>
+            <p class="pb-3">Conclusion Text</p>
+            `,
             description: '',
             topics: '',
             title: '',
@@ -50,7 +59,7 @@ export default class MakePost extends Component {
         return (
             <div>
                 <div class="box__title bg-gray-200 px-3 py-2 border-b"><h3 class="text-sm text-grey-darker font-medium">Blog</h3></div>
-                <textarea placeholder="This is where you write your blog" 
+                <textarea 
                 class="text-grey-darkest flex-1 p-3 w-full bg-transparent resize-none border-purple-200" 
                 wrap="soft"
                 rows="8"
@@ -60,7 +69,7 @@ export default class MakePost extends Component {
                 onChange={this.handleInputChange}
                 />
                 <div class="box__title bg-gray-200 px-3 py-2 border-b"><h3 class="text-sm text-grey-darker font-medium">Description</h3></div>
-                <textarea placeholder="This is where you write your description" 
+                <textarea placeholder="short sum up of the Blog" 
                 class="text-grey-darkest flex-1 p-3 w-full bg-transparent resize-none border-purple-200" 
                 wrap="soft"
                 rows="3"
@@ -77,7 +86,7 @@ export default class MakePost extends Component {
                 onChange={this.handleInputChange}
                 />
                 <div class="box__title bg-gray-200 px-3 py-2 border-b"><h3 class="text-sm text-grey-darker font-medium">Title</h3></div>
-                <input placeholder="Short ish title" 
+                <input placeholder="A good eye grabbing title" 
                 class="text-grey-darkest flex-1 p-3 w-full bg-transparent resize-none border-purple-200" 
                 name="title"
                 value={this.state.title}

@@ -10,7 +10,7 @@ export default class TextHeader extends Component {
                         Boltz Blog
                     </a>
                     <p class="text-lg text-gray-600">
-                        Lorem Ipsum Dolor Sit Amet
+                        The Writers Tails
                     </p>
                 </div>
             </header>

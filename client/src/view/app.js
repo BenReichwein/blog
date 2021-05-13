@@ -19,8 +19,8 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={withAuth(Home)} />
             <Route path="/blog" exact component={Blog} />
-            <Route path="/post" exact component={Post} />
-            <Route path="/makePost/:id" exact component={MakePost} />
+            <Route path="/post/:id" exact component={Post} />
+            <Route path="/makePost/:id" exact component={withAuth(MakePost)} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
           </Switch>

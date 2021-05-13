@@ -12,8 +12,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-// Uploads blog to database
-func GetBlogs() ([]models.Blog) {
+// Find blogs in database
+func FindBlogs() ([]models.Blog) {
 	var blogs []models.Blog
 	// find all the documents in the blog collection
 	cursor, _ := Database.Find(context.Background(), constants.BLOG_COLL, bson.D{})

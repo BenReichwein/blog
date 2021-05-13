@@ -3,7 +3,8 @@ import api from '../services/api'
 import axios from 'axios'
 import {
     WELCOME_MESSAGE,
-    ALL_BLOGS
+    ALL_BLOGS,
+    POST
 } from './types';
 //
 //-> Messages
@@ -100,7 +101,12 @@ export const createBlog = (title, topics, description, blog, image) => {
 // get all blogs
 export const allBlogs = () => async (dispatch) => {
   const response = await api.get('/blog/all')
-  console.log(response)
 
   dispatch({ type: ALL_BLOGS, payload: response.data});
+};
+// get post
+export const getPost = (id) => async (dispatch) => {
+  const response = await api.get(`/post/${id}`)
+
+  dispatch({ type: POST, payload: response.data});
 };

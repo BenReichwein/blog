@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
 
                 <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                     <p class="text-xl font-semibold pb-5">About Me</p>
-                    <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
+                    <p class="pb-2">Im a 17 year old who loves to write some short stories! You'll learn a lot more about me in my writings. Hope you enjoy!</p>
                     <a href="#" class="w-full bg-purple-500 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
                         Ariel Bolton
                     </a>

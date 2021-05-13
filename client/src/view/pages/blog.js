@@ -40,7 +40,7 @@ class Blog extends Component {
                                                 By <a href="#" class="font-semibold hover:text-gray-800">Ariel Bolton</a>
                                             </p>
                                             <a href="#" class="pb-6">{value.description}</a>
-                                            <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                                            <a href={`/post/${value._id}`} class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </article>
                                 )
