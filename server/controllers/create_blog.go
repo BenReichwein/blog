@@ -31,6 +31,7 @@ func CreateBlog(w http.ResponseWriter, r *http.Request) {
 		Description: r.FormValue("description"),
 		Blog: r.FormValue("blog"),
 		Image: header.Filename,
+		Comments: []string{"I loved this one! Very good read!\n -Benny"},
 	}
 
 	res := database.UploadBlog(data, blog)

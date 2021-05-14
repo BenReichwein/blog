@@ -50,14 +50,19 @@ class Post extends Component {
                                 <span class="text-xs text-red-700" id="passwordHelp">Must be logged in to comment</span>
                             </div>
                         </div>
-
-                        <div class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
-                            <div class="flex-1 flex flex-col justify-center md:justify-start">
-                                <p class="font-semibold text-2xl">David</p>
-                                <p class="pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel neque non libero suscipit suscipit eu eu urna.</p>
-                            </div>
-                        </div>
-
+                        {/* Comments */}
+                        {post ? 
+                        post.comments.map((value, index) => {
+                            console.log(value)
+                            return (
+                                <div class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-5 mb-5 p-6">
+                                    <div class="flex-1 flex flex-col justify-center md:justify-start">
+                                        <p class="font-semibold text-2xl">Annon Commenter</p>
+                                        <p class="pt-2">{value}</p>
+                                    </div>
+                                </div>
+                            )
+                        }) : null }
                     </section>
                     {/* Sidebar */}
                     <Sidebar/>

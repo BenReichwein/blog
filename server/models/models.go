@@ -17,6 +17,7 @@ type Blog struct {
 	Description     string             `json:"description"`
 	Blog     		string             `json:"blog"`
 	Image     		string             `json:"image"`
+	Comments        []string           `json:"comments"`
 }
 
 type ResponseResult struct {
