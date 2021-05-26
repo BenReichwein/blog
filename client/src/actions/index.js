@@ -76,7 +76,7 @@ export const createBlog = (title, topics, description, blog, image) => {
 
   axios({
     method: 'POST',
-    url: 'http://localhost:8080/api/blog',
+    url: 'https://blog-314902.wl.r.appspot.com/api/blog',
     data: formData,
     headers: {
       'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
@@ -89,13 +89,7 @@ export const createBlog = (title, topics, description, blog, image) => {
       alert(res.data)
     })
     .catch(err => {
-      if (err.response.status === 401) {
-        history.push("/login")
-        return
-      } else {
-        console.error(err);
-        throw err;
-      }
+      history.push("/login")
     })
 };
 // get all blogs
