@@ -10,18 +10,14 @@ export default class Header extends Component {
                     <nav>
                         <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
                             <li><a class="hover:text-gray-200 hover:underline px-4" href="/blog">Blog</a></li>
-                            <li><a class="hover:text-gray-200 hover:underline px-4" href="/login">Login</a></li>
                         </ul>
                     </nav>
 
                     <div class="flex items-center text-lg no-underline text-white pr-6">
-                        <a class="" href="#">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a class="pl-6" href="#">
+                        <a class="pl-6" href="https://www.instagram.com/arielbolton_/">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a class="pl-6" href="#">
+                        <a class="pl-6" href="https://www.linkedin.com/in/ariel-bolton-2bb5211ba/">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>

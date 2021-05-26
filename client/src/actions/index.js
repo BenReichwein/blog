@@ -110,3 +110,15 @@ export const getPost = (id) => async (dispatch) => {
 
   dispatch({ type: POST, payload: response.data});
 };
+// Create blog
+export const createComment = (id, comment) => () => {
+  api.post(`/comment/${id}`, {
+    comment
+  })
+    .then(() => {
+      window.location.reload()
+    })
+    .catch(() => {
+      alert('Error please try again')
+    })
+};
