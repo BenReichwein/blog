@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 	"server/helpers"
@@ -14,6 +15,10 @@ func ServeImage(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	path := helpers.RootDir() + params["name"]
 	//TODO error
-	file, _ := os.Open(path)
+	file, err := os.Open(path)
+	if (err != nil) {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		fmt.Println(err)
+	}
 	http.ServeContent(w, r, "image", time.Now(), file)
 }
