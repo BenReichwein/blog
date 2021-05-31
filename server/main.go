@@ -18,7 +18,7 @@ func main() {
 	database.Connect()
 
 	c := cors.New(cors.Options{
-        AllowedOrigins: []string{"http://localhost:3000"},
+        AllowedOrigins: []string{"http://localhost:3000", "https://blog-314902.web.app", "https://arielbolton.site"},
 		AllowedMethods: []string{"GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"},
         AllowCredentials: true,
 		AllowedHeaders: []string{"X-Requested-With", "Content-Type"},
