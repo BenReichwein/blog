@@ -3,7 +3,6 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from '../services/history';
 import withAuth from '../middleware/with_auth'
 import Header from './components/header'
-import Home from './pages/home'
 import Login from './pages/login'
 import Register from './pages/register'
 import Blog from './pages/blog'
@@ -17,8 +16,7 @@ const App = () => {
         <div>
           <Header/>
           <Switch>
-            <Route path="/" exact component={withAuth(Home)} />
-            <Route path="/blog" exact component={Blog} />
+            <Route path="/" exact component={Blog} />
             <Route path="/post/:id" exact component={Post} />
             <Route path="/makePost/:id" exact component={withAuth(MakePost)} />
             <Route path="/login" exact component={Login} />

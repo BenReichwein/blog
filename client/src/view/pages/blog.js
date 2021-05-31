@@ -29,17 +29,17 @@ class Blog extends Component {
                             blog.map((value, index) => {
                                 console.log(value)
                                 return (
-                                    <article class="flex flex-col shadow my-4">
-                                        <a href="#" class="hover:opacity-75">
-                                            <img src={`http://localhost:8080/api/img/${value.image}`}/>
+                                    <article class="flex flex-col shadow my-4 w-full">
+                                        <a href={`/post/${value._id}`} class="hover:opacity-75">
+                                            <img src={value.image} className="object-cover w-full"/>
                                         </a>
                                         <div class="bg-white flex flex-col justify-start p-6">
-                                            <a href="#" class="text-purple-500 text-sm font-bold uppercase pb-4">{value.topics}</a>
-                                            <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{value.title}</a>
-                                            <p href="#" class="text-sm pb-3">
-                                                By <a href="#" class="font-semibold hover:text-gray-800">Ariel Bolton</a>
+                                            <a href={`/post/${value._id}`} class="text-purple-500 text-sm font-bold uppercase pb-4">{value.topics}</a>
+                                            <a href={`/post/${value._id}`} class="text-3xl font-bold hover:text-gray-700 pb-4">{value.title}</a>
+                                            <p href={`/post/${value._id}`} class="text-sm pb-3">
+                                                By <a href={`/post/${value._id}`} class="font-semibold hover:text-gray-800">Ariel Bolton</a>
                                             </p>
-                                            <a href="#" class="pb-6">{value.description}</a>
+                                            <a href={`/post/${value._id}`} class="pb-6">{value.description}</a>
                                             <a href={`/post/${value._id}`} class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </article>

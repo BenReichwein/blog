@@ -1,6 +1,5 @@
 import history from '../services/history'
 import api from '../services/api'
-import axios from 'axios'
 import {
     WELCOME_MESSAGE,
     ALL_BLOGS,
@@ -51,46 +50,61 @@ export const login = (formValues) => () => {
 //
 // Create blog
 export const createBlog = (title, topics, description, blog, image) => {
-  console.log('done')
-  const formData = new FormData();
-  formData.append(
-    "file",
+  api.post(`/blog`, {
+    title,
+    topics,
+    description,
+    blog,
     image,
-  );
-  formData.append(
-    'title',
-    title
-  )
-  formData.append(
-    'topics',
-    topics
-  )
-  formData.append(
-    'description',
-    description
-  )
-  formData.append(
-    'blog',
-    blog
-  )
-
-  axios({
-    method: 'POST',
-    url: 'https://blog-314902.wl.r.appspot.com/api/blog',
-    data: formData,
-    headers: {
-      'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
-    },
-    withCredentials: true,
-    mode: 'cors'
+    comments: ["This blog is amazing -Ben"]
   })
-    .then(res => {
+    .then((res) => {
       history.push("/")
       alert(res.data)
     })
-    .catch(err => {
-      history.push("/login")
+    .catch(() => {
+      alert('Error please try again')
     })
+  // console.log('done')
+  // const formData = new FormData();
+  // formData.append(
+  //   "file",
+  //   image,
+  // );
+  // formData.append(
+  //   'title',
+  //   title
+  // )
+  // formData.append(
+  //   'topics',
+  //   topics
+  // )
+  // formData.append(
+  //   'description',
+  //   description
+  // )
+  // formData.append(
+  //   'blog',
+  //   blog
+  // )
+
+  // axios({
+  //   method: 'POST',
+  //   url: 'https://blog-314902.wl.r.appspot.com/api/blog',
+  //   data: formData,
+  //   headers: {
+  //     'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+  //   },
+  //   withCredentials: true,
+  //   mode: 'cors'
+  // })
+  //   .then(res => {
+  //     history.push("/")
+  //     alert(res.data)
+  //   })
+  //   .catch(err => {
+  //     history.push("/login")
+  //   })
 };
 // get all blogs
 export const allBlogs = () => async (dispatch) => {

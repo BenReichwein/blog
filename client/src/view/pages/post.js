@@ -37,10 +37,10 @@ class Post extends Component {
                     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
                         {post ? 
-                            <article class="flex flex-col shadow my-4">
+                            <article class="flex flex-col shadow my-4 w-full">
                                 {/* Article Image */}
                                 <a href="#" class="hover:opacity-75">
-                                    <img src={`http://localhost:8080/api/img/${post.image}`}/>
+                                    <img src={post.image} className="w-full object-cover"/>
                                 </a>
                                 <div class="bg-white flex flex-col justify-start p-6">
                                     <a href="#" class="text-purple-500 text-sm font-bold uppercase pb-4">{post.topic}</a>

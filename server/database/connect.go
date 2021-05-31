@@ -8,12 +8,10 @@ import (
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/gridfs"
 )
 
 type database struct {
 	Database *mongo.Database
-	Bucket   *gridfs.Bucket
 }
 
 func (d *database) Find(ctx context.Context, coll string, filter interface{}) (*mongo.Cursor, error) {
@@ -58,15 +56,6 @@ func Connect() {
 
 	log.Println("Connected to MongoDB!")
 
-	bucket, err := gridfs.NewBucket(
-		client.Database(dbName),
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	log.Println("GridFS bucket created!")
-
-	Database = database{Database: client.Database(dbName), Bucket: bucket}
+	Database = database{Database: client.Database(dbName)}
 	fmt.Println("Collection instance created!")
 }
